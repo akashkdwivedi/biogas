@@ -1,9 +1,10 @@
 {
-  "name": "NodeBootstrap",
+  "name": "Couch_Biogas",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "cluster-start": "node ./bin/clustered_www"
   },
   "dependencies": {
     "bluebird": "^2.9.34",
