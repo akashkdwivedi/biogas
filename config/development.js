@@ -10,9 +10,15 @@ module.exports = {
 		maxHttpConnections: 1000,
 		maxFSDescriptor: 1000
 	},
-	filters: {
-		deliveryCapping: true
-	},
+    couchdb: {
+        host: 'ec2-52-18-53-105.eu-west-1.compute.amazonaws.com',
+        buckets: {
+            biogas: {
+                name: 'biogas',
+                password: 'mahender'
+            }
+        }
+    },
 	mongo: {
 		hosts: [ '127.0.0.1' ],
 		dbname: 'mydatabase',
@@ -22,26 +28,5 @@ module.exports = {
 			password: ''
 		},
 		poolSize: 20
-	},
-	mysql: {
-        cluster: [
-			{	host: '127.0.0.1',
-				user: 'root',
-                port: 3306,
-				password: '',
-				database: '',
-				connectionLimit: 10,
-				queueLimit: 30
-			}
-		]
-	},
-	gearman: {
-		jobServer: '127.0.0.1',
-		port: 4730
-	},
-    redis: {
-        host: 'localhost',
-        port: 6379,
-        database: 2
-    }
+	}
 };
