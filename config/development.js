@@ -8,7 +8,8 @@ module.exports = {
 		host: '127.0.0.1',
 		port: port,
 		maxHttpConnections: 1000,
-		maxFSDescriptor: 1000
+		maxFSDescriptor: 1000,
+        log_path: __dirname+'/../logs'
 	},
     couchdb: {
         host: 'ec2-52-18-53-105.eu-west-1.compute.amazonaws.com',

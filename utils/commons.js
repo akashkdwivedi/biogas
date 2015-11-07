@@ -3,7 +3,7 @@
  */
 
 exports.generateUID = function(){
-    var uid = Math.random()*10 + '.' + Math.random()*10 + '.'+Math.random()*10;
+    var uid = (new Date()).getTime() + '.' + Math.random()*10;
     console.log('uid: ', uid);
     return uid;
 };
