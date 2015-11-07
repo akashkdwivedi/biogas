@@ -17,7 +17,7 @@ module.exports = function(req, res) {
     sensorDataLines.map(function(sensorDataLine){
         if(!_.isEmpty(sensorDataLine)){
             var data = sensorDataLine.split(',');
-            var sensorDate = moment(data.shift(), "YYMMDDhhmmss");
+            var sensorDate = moment(data.shift(), "YYMMDDhhmmss").toString();
             var deviceId = data.shift();
             var sensorData = {data: sensorDataLine, sensorDate: sensorDate, time: time, deviceId: deviceId };
             // log to static file
