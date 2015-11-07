@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "cluster-start": "node ./bin/clustered_www"
+    "cluster-start": "node ./bin/clustered_www",
+    "start": "PORT=8080 node ./bin/clustered_www"
   },
   "dependencies": {
     "bluebird": "^2.9.34",
