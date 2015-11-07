@@ -11,15 +11,16 @@ var fs = require('fs');
 var _ = require('lodash');
 
 module.exports = function(req, res) {
-    var time = moment().utc().format();
+    var recordTime = moment().utc().format();
     var sensorDataLines = req.query.sensor.toString().split(";");
     var saveDataPromises = [];
     sensorDataLines.map(function(sensorDataLine){
         if(!_.isEmpty(sensorDataLine)){
             var data = sensorDataLine.split(',');
-            var sensorDate = moment(data.shift(), "YYMMDDhhmmss").toString();
+            var sensorDate = data.shift();
+            var sensorTime = data.shift();
             var deviceId = data.shift();
-            var sensorData = {data: sensorDataLine, sensorDate: sensorDate, time: time, deviceId: deviceId };
+            var sensorData = {date: sensorDate, time: sensorTime, deviceid: deviceId, data: data, recordedOn: recordTime };
             // log to static file
             logtofile(time +":\t" + JSON.stringify(sensorData));
             saveDataPromises.push(SensorModel.saveDataAsync(commons.generateUID(), sensorData))
