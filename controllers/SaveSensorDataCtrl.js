@@ -22,7 +22,7 @@ module.exports = function(req, res) {
             var deviceId = data.shift();
             var sensorData = {date: sensorDate, time: sensorTime, deviceid: deviceId, data: data, recordedOn: recordTime };
             // log to static file
-            logtofile(time +":\t" + JSON.stringify(sensorData));
+            logtofile(recordTime +":\t" + JSON.stringify(sensorData));
             saveDataPromises.push(SensorModel.saveDataAsync(commons.generateUID(), sensorData))
         }
     });
