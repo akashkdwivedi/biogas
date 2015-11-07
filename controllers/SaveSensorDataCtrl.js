@@ -20,7 +20,8 @@ module.exports = function(req, res) {
             var sensorDate = data.shift();
             var sensorTime = data.shift();
             var deviceId = data.shift();
-            var sensorData = {date: sensorDate, time: sensorTime, deviceid: deviceId, data: data, recordedOn: recordTime };
+            var sensorData = data.shift();
+            var sensorData = {date: sensorDate, time: sensorTime, deviceid: deviceId, data: sensorData, recordedOn: recordTime };
             // log to static file
             logtofile(recordTime +":\t" + JSON.stringify(sensorData));
             saveDataPromises.push(SensorModel.saveDataAsync(commons.generateUID(), sensorData))
