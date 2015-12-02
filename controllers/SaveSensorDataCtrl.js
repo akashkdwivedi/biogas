@@ -11,7 +11,7 @@ var fs = require('fs');
 var _ = require('lodash');
 
 module.exports = function(req, res) {
-    var recordTime = moment().utc().format();
+    //var recordTime = moment().utc().format();
     var sensorDataLines = req.query.sensor.toString().split(";");
     var saveDataPromises = [];
     sensorDataLines.map(function(sensorDataLine){
@@ -21,7 +21,7 @@ module.exports = function(req, res) {
             var sensorTime = data.shift();
             var deviceId = data.shift();
             var sensorData = data.shift();
-            var sensorData = {date: sensorDate, time: sensorTime, deviceid: deviceId, data: sensorData, recordedOn: recordTime };
+            var sensorData = {date: sensorDate, time: sensorTime, deviceid: deviceId, data: sensorData };
             // log to static file
             logtofile(recordTime +":\t" + JSON.stringify(sensorData));
             saveDataPromises.push(SensorModel.saveDataAsync(commons.generateUID(), sensorData))
