@@ -11,7 +11,7 @@ var fs = require('fs');
 var _ = require('lodash');
 
 module.exports = function(req, res) {
-    //var recordTime = moment().utc().format();
+    var recordTime = moment().utc().format();
     var sensorDataLines = req.query.sensor.toString().split(";");
     var saveDataPromises = [];
     sensorDataLines.map(function(sensorDataLine){
